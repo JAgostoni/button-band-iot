@@ -1,0 +1,93 @@
+{
+  "manifestVersion": 1,
+  "name": "ButtonBandTile",
+  "description": "Band Webtile to render button press results from an Arduino",
+  "version": 1,
+  "versionString": "1",
+  "author": "Jason Agostoni",
+  "organization": "",
+  "contactEmail": "",
+  "tileIcon": {
+    "46": "icons/tileIcon.png"
+  },
+  "icons": {},
+  "refreshIntervalMinutes": 15,
+  //"tileTheme": {
+  //  "base": "d94c66",
+  //  "highlight": "ea5475",
+  //  "lowlight": "c64763",
+  //  "secondary": "a3919c",
+  //  "highContrast": "bf455f",
+  //  "muted": "993344"
+  //},
+  "resources": [
+    {
+      "url": "http://buttonband.azurewebsites.net/api/buttoncounts",
+      "style": "Simple",
+      "content": {
+        "_1_red": "Red",
+        "_1_green": "Green",
+        "_1_blue": "Blue",
+        "_1_yellow": "Yellow"
+      }
+    }
+  ],
+  "pages": [
+    {
+      "layout": "MSBand_SingleMetric",
+      "condition": "true",
+      "textBindings": [
+        {
+          "elementId": "1",
+          "value": "Red"
+        },
+        {
+          "elementId": "2",
+          "value": "{{_1_red}}"
+        }
+      ]
+    },
+    {
+      "layout": "MSBand_SingleMetric",
+      "condition": "true",
+      "textBindings": [
+        {
+          "elementId": "1",
+          "value": "Green"
+        },
+        {
+          "elementId": "2",
+          "value": "{{_1_green}}"
+        }
+      ]
+    },
+    {
+      "layout": "MSBand_SingleMetric",
+      "condition": "true",
+      "textBindings": [
+        {
+          "elementId": "1",
+          "value": "Blue"
+        },
+        {
+          "elementId": "2",
+          "value": "{{_1_blue}}"
+        }
+      ]
+    },
+    {
+      "layout": "MSBand_SingleMetric",
+      "condition": "true",
+      "textBindings": [
+        {
+          "elementId": "1",
+          "value": "Yellow"
+        },
+        {
+          "elementId": "2",
+          "value": "{{_1_yellow}}"
+        }
+      ]
+    }
+  ]
+}
