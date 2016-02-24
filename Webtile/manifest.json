@@ -12,14 +12,14 @@
   },
   "icons": {},
   "refreshIntervalMinutes": 15,
-  //"tileTheme": {
-  //  "base": "d94c66",
-  //  "highlight": "ea5475",
-  //  "lowlight": "c64763",
-  //  "secondary": "a3919c",
-  //  "highContrast": "bf455f",
-  //  "muted": "993344"
-  //},
+  "tileTheme": {
+    "base": "d94c66",
+    "highlight": "ea5475",
+    "lowlight": "c64763",
+    "secondary": "a3919c",
+    "highContrast": "bf455f",
+    "muted": "993344"
+  },
   "resources": [
     {
       "url": "http://buttonband.azurewebsites.net/api/buttoncounts",
