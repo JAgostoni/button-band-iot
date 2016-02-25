@@ -15,6 +15,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "icons", "icons", "{1BCD5B1E
 		Webtile\icons\tileIcon.png = Webtile\icons\tileIcon.png
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebJob", "WebJob\WebJob.csproj", "{E55EA05C-8053-4B56-8010-0871F77B31AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateDeviceKey", "CreateDeviceKey\CreateDeviceKey.csproj", "{106D4860-3F1C-4DF5-A093-88469DB9EC78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceSimulator", "DeviceSimulator\DeviceSimulator.csproj", "{8031AD02-5E61-4080-8638-7CC9E1C79B2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +31,18 @@ Global
 		{73AA5B93-092D-4747-904A-EFB459036CA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73AA5B93-092D-4747-904A-EFB459036CA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73AA5B93-092D-4747-904A-EFB459036CA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E55EA05C-8053-4B56-8010-0871F77B31AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E55EA05C-8053-4B56-8010-0871F77B31AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E55EA05C-8053-4B56-8010-0871F77B31AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E55EA05C-8053-4B56-8010-0871F77B31AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{106D4860-3F1C-4DF5-A093-88469DB9EC78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{106D4860-3F1C-4DF5-A093-88469DB9EC78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{106D4860-3F1C-4DF5-A093-88469DB9EC78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{106D4860-3F1C-4DF5-A093-88469DB9EC78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8031AD02-5E61-4080-8638-7CC9E1C79B2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8031AD02-5E61-4080-8638-7CC9E1C79B2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8031AD02-5E61-4080-8638-7CC9E1C79B2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8031AD02-5E61-4080-8638-7CC9E1C79B2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

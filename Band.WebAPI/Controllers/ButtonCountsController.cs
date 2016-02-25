@@ -20,6 +20,28 @@ namespace Band.WebAPI.Controllers
             return Ok(_DATA);
 
         }
+
+        [HttpPost]
+        public IHttpActionResult Post([FromBody] string color)
+        {
+            switch (color.ToUpper())
+            {
+                case "RED":
+                    _DATA.Red++;
+                    break;
+                case "GREEN":
+                    _DATA.Green++;
+                    break;
+                case "BLUE":
+                    _DATA.Blue++;
+                    break;
+                case "YELLOW":
+                    _DATA.Yellow++;
+                    break;
+            }
+
+            return Ok();
+        }
     }
 
 
