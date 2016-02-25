@@ -12,12 +12,15 @@ namespace DeviceSimulator
     {
         static DeviceClient deviceClient;
         static string IOT_HUB_URI = "jasoniot.azure-devices.net";
-        static string DEVICE_KEY = "<Device Key...Ask Geoff>";
+        static string DEVICE_KEY = "<ask geoff>";
 
         static void Main(string[] args)
         {
             deviceClient = DeviceClient.Create(IOT_HUB_URI, new DeviceAuthenticationWithRegistrySymmetricKey("testdevice", DEVICE_KEY));
             SendMessage(deviceClient, "red").Wait();
+            SendMessage(deviceClient, "blue").Wait();
+            SendMessage(deviceClient, "green").Wait();
+            SendMessage(deviceClient, "yellow").Wait();
         }
 
         public static async Task SendMessage(DeviceClient deviceClient, string color)
@@ -25,7 +28,6 @@ namespace DeviceSimulator
 
             var message = new Message(Encoding.ASCII.GetBytes(color));
             await deviceClient.SendEventAsync(message);
-            Thread.Sleep(1000);
         }
     }
 }

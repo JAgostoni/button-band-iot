@@ -16,9 +16,7 @@ namespace Band.WebAPI.Controllers
         [HttpGet]
         public IHttpActionResult Get()
         {
-            _DATA.Yellow++;
             return Ok(_DATA);
-
         }
 
         [HttpPost]
