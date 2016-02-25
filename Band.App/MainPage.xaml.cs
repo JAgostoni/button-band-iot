@@ -25,6 +25,22 @@ namespace Band.App
         public MainPage()
         {
             this.InitializeComponent();
+
+
+            var duino = new Arduino.ArduinoButtons();
+            duino.DeviceReady += Duino_DeviceReady;
+            duino.ButtonPressed += Duino_ButtonPressed;
+            duino.ConnectToArduino().Wait();
+        }
+
+        private void Duino_ButtonPressed(object sender, Arduino.ButtonArgs e)
+        {
+            
+        }
+
+        private void Duino_DeviceReady(object sender, EventArgs e)
+        {
+            
         }
     }
 }
