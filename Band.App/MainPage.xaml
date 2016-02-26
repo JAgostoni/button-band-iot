@@ -6,10 +6,75 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
+        <Storyboard x:Name="ButtonIndicatorStoryboard"/>
+    </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-        <Button Click="Button_Click" />
-
+    <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="PressedStates">
+                <VisualStateGroup.Transitions>
+                    <VisualTransition GeneratedDuration="0:0:1">
+                        <VisualTransition.GeneratedEasingFunction>
+                            <ExponentialEase EasingMode="EaseIn"/>
+                        </VisualTransition.GeneratedEasingFunction>
+                    </VisualTransition>
+                </VisualStateGroup.Transitions>
+                <VisualState x:Name="BluePressed">
+                    <VisualState.Setters>
+                        <Setter Target="ellipse.(Shape.Stroke).(SolidColorBrush.Color)">
+                            <Setter.Value>
+                                <Color>White</Color>
+                            </Setter.Value>
+                        </Setter>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="GreenPressed">
+                    <VisualState.Setters>
+                        <Setter Target="ellipse1.(Shape.Stroke).(SolidColorBrush.Color)">
+                            <Setter.Value>
+                                <Color>White</Color>
+                            </Setter.Value>
+                        </Setter>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="YellowPressed">
+                    <VisualState.Setters>
+                        <Setter Target="ellipse2.(Shape.Stroke).(SolidColorBrush.Color)">
+                            <Setter.Value>
+                                <Color>White</Color>
+                            </Setter.Value>
+                        </Setter>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="RedPressed">
+                    <VisualState.Setters>
+                        <Setter Target="ellipse3.(Shape.Stroke).(SolidColorBrush.Color)">
+                            <Setter.Value>
+                                <Color>#FCFFFFFF</Color>
+                            </Setter.Value>
+                        </Setter>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <StackPanel Margin="0,0,-2.4,0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid Margin="0,0,30,0">
+                <Ellipse x:Name="ellipse" Fill="#FF3662FF" Stroke="Transparent" HorizontalAlignment="Center" Height="250" VerticalAlignment="Center" Width="250" StrokeThickness="20"/>
+                <TextBlock x:Name="BlueCount" TextWrapping="Wrap" Text="105" Foreground="White" FontSize="48" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold"/>
+            </Grid>
+            <Grid Margin="0,0,30,0">
+                <Ellipse x:Name="ellipse1" Fill="#FF3EE866" Stroke="Transparent" HorizontalAlignment="Center" Height="250" VerticalAlignment="Center" Width="250" StrokeThickness="20"/>
+                <TextBlock x:Name="GreenCount" TextWrapping="Wrap" Text="105" Foreground="White" FontSize="48" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold"/>
+            </Grid>
+            <Grid Margin="0,0,30,0">
+                <Ellipse x:Name="ellipse2" Fill="#FFFFE064" Stroke="Transparent" HorizontalAlignment="Center" Height="250" VerticalAlignment="Center" Width="250" StrokeThickness="20"/>
+                <TextBlock x:Name="YellowCount" TextWrapping="Wrap" Text="105" Foreground="White" FontSize="48" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold"/>
+            </Grid>
+            <Grid>
+                <Ellipse x:Name="ellipse3" Fill="#FFE8392B" Stroke="Transparent" HorizontalAlignment="Center" Height="250" VerticalAlignment="Center" Width="250" StrokeThickness="20"/>
+                <TextBlock x:Name="RedCount" TextWrapping="Wrap" Text="105" Foreground="White" FontSize="48" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold"/>
+            </Grid>
+        </StackPanel>
     </Grid>
 </Page>

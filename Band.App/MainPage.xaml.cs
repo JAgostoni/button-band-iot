@@ -1,20 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using System.Diagnostics;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+using System.Threading.Tasks;
 
 namespace Band.App
 {
@@ -23,19 +10,44 @@ namespace Band.App
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        Arduino.ArduinoButtons _Board;
+        Arduino.ArduinoButtons _Arduino;
         Azure.IoTHubClient _Client;
 
         public MainPage()
         {
-            this.InitializeComponent();
-            _Client = new Azure.IoTHubClient();
+            InitializeComponent();
 
+            Loaded += MainPage_Loaded;
         }
 
-        private async void Duino_ButtonPressed(object sender, Arduino.ButtonArgs e)
+        private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            Debug.Write(e.Color.ToString());
+
+            _Arduino = new Arduino.ArduinoButtons();
+            _Arduino.DeviceReady += _Arduino_DeviceReady;
+            _Arduino.ButtonPressed += _Arduino_ButtonPressed;
+            _Arduino.ConnectToArduino();
+
+
+            _Client = new Azure.IoTHubClient();
+
+            // Get results from Azure and populate the current button counts
+            BlueCount.Text = "0";
+            GreenCount.Text = "0";
+            YellowCount.Text = "0";
+            RedCount.Text = "0";
+
+
+            
+        }
+
+        private async void _Arduino_ButtonPressed(object sender, Arduino.ButtonArgs e)
+        {
+            Debug.WriteLine(e.Color.ToString());
+
+
+            Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Low, () => ButtonPressed(e.Color.ToString()));
+            
             switch (e.Color)
             {
                 case Arduino.ButtonColor.Red:
@@ -53,21 +65,20 @@ namespace Band.App
                 default:
                     break;
             }
-
         }
 
-        private void Duino_DeviceReady(object sender, EventArgs e)
+        private void _Arduino_DeviceReady(object sender, System.EventArgs e)
         {
             
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Call this with a title case color like Blue, Green, Yellow, Red.
+        /// </summary>
+        /// <param name="buttonColorName"></param>
+        private void ButtonPressed(string buttonColorName)
         {
-            var _Board = new Arduino.ArduinoButtons();
-            _Board.DeviceReady += Duino_DeviceReady;
-            _Board.ButtonPressed += Duino_ButtonPressed;
-            await _Board.ConnectToArduino();
-
+            VisualStateManager.GoToState(this, $"{buttonColorName}Pressed", true);
         }
     }
 }
