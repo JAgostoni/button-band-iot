@@ -1,19 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace Band.App
 {
@@ -36,6 +22,15 @@ namespace Band.App
             GreenCount.Text = "77";
             YellowCount.Text = "5";
             RedCount.Text = "165";
+        }
+
+        /// <summary>
+        /// Call this with a title case color like Blue, Green, Yellow, Red.
+        /// </summary>
+        /// <param name="buttonColorName"></param>
+        private void ButtonPressed(string buttonColorName)
+        {
+            VisualStateManager.GoToState(this, $"{buttonColorName}Pressed", true);
         }
     }
 }
