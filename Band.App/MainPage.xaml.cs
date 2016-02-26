@@ -2,6 +2,7 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using System.Threading.Tasks;
+using System;
 
 namespace Band.App
 {
@@ -41,12 +42,12 @@ namespace Band.App
             
         }
 
-        private async void _Arduino_ButtonPressed(object sender, Arduino.ButtonArgs e)
+        private void _Arduino_ButtonPressed(object sender, Arduino.ButtonArgs e)
         {
             Debug.WriteLine(e.Color.ToString());
 
 
-            Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Low, () => ButtonPressed(e.Color.ToString()));
+            ButtonPressed(e.Color.ToString());
             
             switch (e.Color)
             {
@@ -76,9 +77,10 @@ namespace Band.App
         /// Call this with a title case color like Blue, Green, Yellow, Red.
         /// </summary>
         /// <param name="buttonColorName"></param>
-        private void ButtonPressed(string buttonColorName)
+        private async Task ButtonPressed(string buttonColorName)
         {
-            VisualStateManager.GoToState(this, $"{buttonColorName}Pressed", true);
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => VisualStateManager.GoToState(this, $"{buttonColorName}Pressed", false));
+
         }
     }
 }
