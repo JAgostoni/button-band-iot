@@ -45,8 +45,6 @@ namespace Band.App.Arduino
                 _Arduino.DeviceReady += _Arduino_DeviceReady;
 
 
-
-
                 _Connection.begin(57600, 0);
 
                 return true;
@@ -59,6 +57,7 @@ namespace Band.App.Arduino
 
         private void _Arduino_DeviceReady()
         {
+            Debug.WriteLine("Device is ready");
             Setup();
             if (DeviceReady != null)
             {

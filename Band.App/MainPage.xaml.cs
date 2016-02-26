@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,25 +23,51 @@ namespace Band.App
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        Arduino.ArduinoButtons _Board;
+        Azure.IoTHubClient _Client;
+
         public MainPage()
         {
             this.InitializeComponent();
+            _Client = new Azure.IoTHubClient();
 
-
-            var duino = new Arduino.ArduinoButtons();
-            duino.DeviceReady += Duino_DeviceReady;
-            duino.ButtonPressed += Duino_ButtonPressed;
-            duino.ConnectToArduino().Wait();
         }
 
-        private void Duino_ButtonPressed(object sender, Arduino.ButtonArgs e)
+        private async void Duino_ButtonPressed(object sender, Arduino.ButtonArgs e)
         {
-            
+            Debug.Write(e.Color.ToString());
+            switch (e.Color)
+            {
+                case Arduino.ButtonColor.Red:
+                    _Client.SendRed();
+                    break;
+                case Arduino.ButtonColor.Yellow:
+                    _Client.SendYellow();
+                    break;
+                case Arduino.ButtonColor.Green:
+                    _Client.SendGreen();
+                    break;
+                case Arduino.ButtonColor.Blue:
+                    _Client.SendBlue();
+                    break;
+                default:
+                    break;
+            }
+
         }
 
         private void Duino_DeviceReady(object sender, EventArgs e)
         {
             
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var _Board = new Arduino.ArduinoButtons();
+            _Board.DeviceReady += Duino_DeviceReady;
+            _Board.ButtonPressed += Duino_ButtonPressed;
+            await _Board.ConnectToArduino();
+
         }
     }
 }
