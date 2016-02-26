@@ -19,7 +19,7 @@ namespace Band.App.Arduino
         private const byte BLUE_BUTTON_PIN = 2;
 
         RemoteDevice _Arduino;
-
+        IStream _Connection;
 
         public event EventHandler<EventArgs> DeviceReady;
         public event EventHandler<ButtonArgs> ButtonPressed;
@@ -30,23 +30,24 @@ namespace Band.App.Arduino
             var board = await FindFirstArduinoBoard();
             if (board != null)
             {
-                var port = new UsbSerial(board);
-                port.ConnectionEstablished += () =>
+                _Connection = new UsbSerial(board);
+                _Connection.ConnectionEstablished += () =>
                 {
                     Debug.WriteLine("Established");
                 };
 
-                port.ConnectionFailed += (m) => 
+                _Connection.ConnectionFailed += (m) => 
                 {
                     Debug.WriteLine("Failed " + m);
                 };
                 
-                _Arduino = new RemoteDevice(port);
+                _Arduino = new RemoteDevice(_Connection);
                 _Arduino.DeviceReady += _Arduino_DeviceReady;
-                _Arduino.DigitalPinUpdated += _Arduino_DigitalPinUpdated;
 
 
-                port.begin(57600, SerialConfig.SERIAL_8N1);
+
+
+                _Connection.begin(57600, 0);
 
                 return true;
             }
@@ -62,12 +63,29 @@ namespace Band.App.Arduino
             if (DeviceReady != null)
             {
                 DeviceReady(this, new EventArgs());
+                //Loop();
             }
         }
 
+        private PinState _LastRed = PinState.HIGH;
+        private Task Loop()
+        {
+            return Task.Run(() =>
+            {
+                while(true)
+                { 
+                    var red = _Arduino.digitalRead(RED_BUTTON_PIN);
+                    if(red != _LastRed)
+                    {
+                        Debug.WriteLine(red);
+                        _LastRed = red;
+                    }
+                }
+            });
+        }
         private void _Arduino_DigitalPinUpdated(byte pin, PinState state)
         {
-            if (state == PinState.LOW) 
+            if (state == PinState.HIGH) 
             {
                 ButtonColor color;
                 switch (pin)
@@ -104,10 +122,11 @@ namespace Band.App.Arduino
 
         private void Setup ()
         {
-            _Arduino.pinMode(RED_BUTTON_PIN, PinMode.PULLUP);
-            _Arduino.pinMode(YELLOW_BUTTON_PIN, PinMode.PULLUP);
-            _Arduino.pinMode(GREEN_BUTTON_PIN, PinMode.PULLUP);
-            _Arduino.pinMode(BLUE_BUTTON_PIN, PinMode.PULLUP);
+            _Arduino.DigitalPinUpdated += _Arduino_DigitalPinUpdated;
+            _Arduino.pinMode(RED_BUTTON_PIN, PinMode.INPUT);
+            _Arduino.pinMode(YELLOW_BUTTON_PIN, PinMode.INPUT);
+            _Arduino.pinMode(GREEN_BUTTON_PIN, PinMode.INPUT);
+            _Arduino.pinMode(BLUE_BUTTON_PIN, PinMode.INPUT);
 
          
         }
