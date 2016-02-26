@@ -6,8 +6,51 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
+        <Storyboard x:Name="ButtonIndicatorStoryboard"/>
+    </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="PressedStates">
+                <VisualStateGroup.Transitions>
+                    <VisualTransition GeneratedDuration="0:0:1">
+                        <VisualTransition.GeneratedEasingFunction>
+                            <ExponentialEase EasingMode="EaseIn"/>
+                        </VisualTransition.GeneratedEasingFunction>
+                    </VisualTransition>
+                </VisualStateGroup.Transitions>
+                <VisualState x:Name="BluePressed">
+                    <Storyboard>
+                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                            <EasingColorKeyFrame KeyTime="0" Value="#FF3662FF"/>
+                            <EasingColorKeyFrame KeyTime="0:0:0.5" Value="White"/>
+                            <EasingColorKeyFrame KeyTime="0:0:1" Value="#FF3662FF"/>
+                        </ColorAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="GreenPressed"/>
+                <VisualState x:Name="YellowPressed"/>
+                <VisualState x:Name="RedPressed"/>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <StackPanel Margin="0,0,-2.4,0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid Margin="0,0,30,0">
+                <Ellipse x:Name="ellipse" Fill="#FF3662FF" HorizontalAlignment="Center" Height="200" VerticalAlignment="Center" Width="200" Style="{StaticResource ButtonIndicatorStyle}"/>
+                <TextBlock x:Name="BlueCount" TextWrapping="Wrap" Text="105" Foreground="White" FontSize="48" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold"/>
+            </Grid>
+            <Grid Margin="0,0,30,0">
+                <Ellipse Fill="#FF3EE866" HorizontalAlignment="Center" Height="200" VerticalAlignment="Center" Width="200"/>
+                <TextBlock x:Name="GreenCount" TextWrapping="Wrap" Text="105" Foreground="White" FontSize="48" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold"/>
+            </Grid>
+            <Grid Margin="0,0,30,0">
+                <Ellipse Fill="#FFFFE064" HorizontalAlignment="Center" Height="200" VerticalAlignment="Center" Width="200"/>
+                <TextBlock x:Name="YellowCount" TextWrapping="Wrap" Text="105" Foreground="White" FontSize="48" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold"/>
+            </Grid>
+            <Grid>
+                <Ellipse Fill="#FFE8392B" HorizontalAlignment="Center" Height="200" VerticalAlignment="Center" Width="200"/>
+                <TextBlock x:Name="RedCount" TextWrapping="Wrap" Text="105" Foreground="White" FontSize="48" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold"/>
+            </Grid>
+        </StackPanel>
     </Grid>
 </Page>
