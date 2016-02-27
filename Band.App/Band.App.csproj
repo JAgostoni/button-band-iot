@@ -102,6 +102,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Arduino\ArduinoButtons.cs" />
+    <Compile Include="Azure\BandAPIClient.cs" />
     <Compile Include="Azure\IoTHubClient.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

@@ -13,6 +13,7 @@ namespace Band.App
     {
         Arduino.ArduinoButtons _Arduino;
         Azure.IoTHubClient _Client;
+        Azure.BandAPIClient _API;
 
         public MainPage()
         {
@@ -38,7 +39,19 @@ namespace Band.App
             YellowCount.Text = "0";
             RedCount.Text = "0";
 
+            _API = new Azure.BandAPIClient();
+            _API.CountsUpdated += async (s, counts) =>
+            {
+                await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                {
+                    BlueCount.Text = counts.Blue.ToString();
+                    GreenCount.Text = counts.Green.ToString();
+                    YellowCount.Text = counts.Yellow.ToString();
+                    RedCount.Text = counts.Red.ToString();
 
+                });
+            };
+            _API.CheckEveryFewSeconds();
             
         }
 
