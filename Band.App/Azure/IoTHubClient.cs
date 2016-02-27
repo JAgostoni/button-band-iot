@@ -10,8 +10,8 @@ namespace Band.App.Azure
     public class IoTHubClient
     {
         private const string IOT_HUB_URI = "jasoniot.azure-devices.net";
-        private const string DEVICE_KEY = "ZB7jgpbBcrURXQGSe+5IsKL8BHHbwNBsYQScBpy+6Xg=";
-        private const string DEVICE_ID = "testdevice";
+        private const string DEVICE_KEY = "<put key here>";
+        private const string DEVICE_ID = "jasonsuno";
 
         private DeviceClient _Client;
 
