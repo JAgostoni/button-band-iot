@@ -60,20 +60,20 @@
         </VisualStateManager.VisualStateGroups>
         <StackPanel Margin="0,0,-2.4,0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid Margin="0,0,30,0">
-                <Ellipse x:Name="ellipse" Fill="#FF3662FF" Stroke="Transparent" HorizontalAlignment="Center" Height="250" VerticalAlignment="Center" Width="250" StrokeThickness="20"/>
-                <TextBlock x:Name="BlueCount" TextWrapping="Wrap" Text="105" Foreground="White" FontSize="48" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold"/>
-            </Grid>
-            <Grid Margin="0,0,30,0">
-                <Ellipse x:Name="ellipse1" Fill="#FF3EE866" Stroke="Transparent" HorizontalAlignment="Center" Height="250" VerticalAlignment="Center" Width="250" StrokeThickness="20"/>
-                <TextBlock x:Name="GreenCount" TextWrapping="Wrap" Text="105" Foreground="White" FontSize="48" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold"/>
+                <Ellipse x:Name="ellipse3" Fill="#FFE8392B" Stroke="Transparent" HorizontalAlignment="Center" Height="250" VerticalAlignment="Center" Width="250" StrokeThickness="20"/>
+                <TextBlock x:Name="RedCount" TextWrapping="Wrap" Text="105" Foreground="White" FontSize="48" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold"/>
             </Grid>
             <Grid Margin="0,0,30,0">
                 <Ellipse x:Name="ellipse2" Fill="#FFFFE064" Stroke="Transparent" HorizontalAlignment="Center" Height="250" VerticalAlignment="Center" Width="250" StrokeThickness="20"/>
                 <TextBlock x:Name="YellowCount" TextWrapping="Wrap" Text="105" Foreground="White" FontSize="48" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold"/>
             </Grid>
-            <Grid>
-                <Ellipse x:Name="ellipse3" Fill="#FFE8392B" Stroke="Transparent" HorizontalAlignment="Center" Height="250" VerticalAlignment="Center" Width="250" StrokeThickness="20"/>
-                <TextBlock x:Name="RedCount" TextWrapping="Wrap" Text="105" Foreground="White" FontSize="48" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Grid Margin="0,0,30,0">
+                <Ellipse x:Name="ellipse1" Fill="#FF3EE866" Stroke="Transparent" HorizontalAlignment="Center" Height="250" VerticalAlignment="Center" Width="250" StrokeThickness="20"/>
+                <TextBlock x:Name="GreenCount" TextWrapping="Wrap" Text="105" Foreground="White" FontSize="48" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold"/>
+            </Grid>
+            <Grid Height="250" Width="250">
+                <Ellipse x:Name="ellipse" Fill="#FF3662FF" Stroke="Transparent" HorizontalAlignment="Center" Height="250" VerticalAlignment="Center" Width="250" StrokeThickness="20"/>
+                <TextBlock x:Name="BlueCount" TextWrapping="Wrap" Text="105" Foreground="White" FontSize="48" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold"/>
             </Grid>
         </StackPanel>
     </Grid>
