@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Band.WebAPI", "Band.WebAPI\Band.WebAPI.csproj", "{73AA5B93-092D-4747-904A-EFB459036CA3}"
 EndProject
@@ -22,6 +22,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceSimulator", "DeviceSimulator\DeviceSimulator.csproj", "{8031AD02-5E61-4080-8638-7CC9E1C79B2B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Band.App", "Band.App\Band.App.csproj", "{8D34E359-8288-46C1-8AA8-456280678AD1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "remote-wiring", "remote-wiring", "{9AAF9E25-4ED3-42B1-8951-2A1956041233}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Microsoft.Maker.RemoteWiring", "remotewiring\Microsoft.Maker.win10\Microsoft.Maker.RemoteWiring\Microsoft.Maker.RemoteWiring.vcxproj", "{5A8B1BB1-7CD5-47C4-A1F7-D7BCF5FACAD1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Microsoft.Maker.Firmata", "remotewiring\Microsoft.Maker.win10\Microsoft.Maker.Firmata\Microsoft.Maker.Firmata.vcxproj", "{F0A53BC9-C617-47DD-8B68-F91E3502D633}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Microsoft.Maker.Serial", "remotewiring\source\Serial\Microsoft.Maker.Serial.win10\Microsoft.Maker.Serial.vcxproj", "{8376216C-282A-4927-B9EF-C2D545FE0BCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -100,6 +108,8 @@ Global
 		{8031AD02-5E61-4080-8638-7CC9E1C79B2B}.Release|x86.ActiveCfg = Release|Any CPU
 		{8031AD02-5E61-4080-8638-7CC9E1C79B2B}.Release|x86.Build.0 = Release|Any CPU
 		{8D34E359-8288-46C1-8AA8-456280678AD1}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{8D34E359-8288-46C1-8AA8-456280678AD1}.Debug|Any CPU.Build.0 = Debug|x86
+		{8D34E359-8288-46C1-8AA8-456280678AD1}.Debug|Any CPU.Deploy.0 = Debug|x86
 		{8D34E359-8288-46C1-8AA8-456280678AD1}.Debug|ARM.ActiveCfg = Debug|ARM
 		{8D34E359-8288-46C1-8AA8-456280678AD1}.Debug|ARM.Build.0 = Debug|ARM
 		{8D34E359-8288-46C1-8AA8-456280678AD1}.Debug|ARM.Deploy.0 = Debug|ARM
@@ -119,11 +129,59 @@ Global
 		{8D34E359-8288-46C1-8AA8-456280678AD1}.Release|x86.ActiveCfg = Release|x86
 		{8D34E359-8288-46C1-8AA8-456280678AD1}.Release|x86.Build.0 = Release|x86
 		{8D34E359-8288-46C1-8AA8-456280678AD1}.Release|x86.Deploy.0 = Release|x86
+		{5A8B1BB1-7CD5-47C4-A1F7-D7BCF5FACAD1}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{5A8B1BB1-7CD5-47C4-A1F7-D7BCF5FACAD1}.Debug|Any CPU.Build.0 = Debug|Win32
+		{5A8B1BB1-7CD5-47C4-A1F7-D7BCF5FACAD1}.Debug|ARM.ActiveCfg = Debug|ARM
+		{5A8B1BB1-7CD5-47C4-A1F7-D7BCF5FACAD1}.Debug|ARM.Build.0 = Debug|ARM
+		{5A8B1BB1-7CD5-47C4-A1F7-D7BCF5FACAD1}.Debug|x64.ActiveCfg = Debug|x64
+		{5A8B1BB1-7CD5-47C4-A1F7-D7BCF5FACAD1}.Debug|x64.Build.0 = Debug|x64
+		{5A8B1BB1-7CD5-47C4-A1F7-D7BCF5FACAD1}.Debug|x86.ActiveCfg = Debug|Win32
+		{5A8B1BB1-7CD5-47C4-A1F7-D7BCF5FACAD1}.Debug|x86.Build.0 = Debug|Win32
+		{5A8B1BB1-7CD5-47C4-A1F7-D7BCF5FACAD1}.Release|Any CPU.ActiveCfg = Release|Win32
+		{5A8B1BB1-7CD5-47C4-A1F7-D7BCF5FACAD1}.Release|ARM.ActiveCfg = Release|ARM
+		{5A8B1BB1-7CD5-47C4-A1F7-D7BCF5FACAD1}.Release|ARM.Build.0 = Release|ARM
+		{5A8B1BB1-7CD5-47C4-A1F7-D7BCF5FACAD1}.Release|x64.ActiveCfg = Release|x64
+		{5A8B1BB1-7CD5-47C4-A1F7-D7BCF5FACAD1}.Release|x64.Build.0 = Release|x64
+		{5A8B1BB1-7CD5-47C4-A1F7-D7BCF5FACAD1}.Release|x86.ActiveCfg = Release|Win32
+		{5A8B1BB1-7CD5-47C4-A1F7-D7BCF5FACAD1}.Release|x86.Build.0 = Release|Win32
+		{F0A53BC9-C617-47DD-8B68-F91E3502D633}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{F0A53BC9-C617-47DD-8B68-F91E3502D633}.Debug|Any CPU.Build.0 = Debug|Win32
+		{F0A53BC9-C617-47DD-8B68-F91E3502D633}.Debug|ARM.ActiveCfg = Debug|ARM
+		{F0A53BC9-C617-47DD-8B68-F91E3502D633}.Debug|ARM.Build.0 = Debug|ARM
+		{F0A53BC9-C617-47DD-8B68-F91E3502D633}.Debug|x64.ActiveCfg = Debug|x64
+		{F0A53BC9-C617-47DD-8B68-F91E3502D633}.Debug|x64.Build.0 = Debug|x64
+		{F0A53BC9-C617-47DD-8B68-F91E3502D633}.Debug|x86.ActiveCfg = Debug|Win32
+		{F0A53BC9-C617-47DD-8B68-F91E3502D633}.Debug|x86.Build.0 = Debug|Win32
+		{F0A53BC9-C617-47DD-8B68-F91E3502D633}.Release|Any CPU.ActiveCfg = Release|Win32
+		{F0A53BC9-C617-47DD-8B68-F91E3502D633}.Release|ARM.ActiveCfg = Release|ARM
+		{F0A53BC9-C617-47DD-8B68-F91E3502D633}.Release|ARM.Build.0 = Release|ARM
+		{F0A53BC9-C617-47DD-8B68-F91E3502D633}.Release|x64.ActiveCfg = Release|x64
+		{F0A53BC9-C617-47DD-8B68-F91E3502D633}.Release|x64.Build.0 = Release|x64
+		{F0A53BC9-C617-47DD-8B68-F91E3502D633}.Release|x86.ActiveCfg = Release|Win32
+		{F0A53BC9-C617-47DD-8B68-F91E3502D633}.Release|x86.Build.0 = Release|Win32
+		{8376216C-282A-4927-B9EF-C2D545FE0BCA}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{8376216C-282A-4927-B9EF-C2D545FE0BCA}.Debug|Any CPU.Build.0 = Debug|Win32
+		{8376216C-282A-4927-B9EF-C2D545FE0BCA}.Debug|ARM.ActiveCfg = Debug|ARM
+		{8376216C-282A-4927-B9EF-C2D545FE0BCA}.Debug|ARM.Build.0 = Debug|ARM
+		{8376216C-282A-4927-B9EF-C2D545FE0BCA}.Debug|x64.ActiveCfg = Debug|x64
+		{8376216C-282A-4927-B9EF-C2D545FE0BCA}.Debug|x64.Build.0 = Debug|x64
+		{8376216C-282A-4927-B9EF-C2D545FE0BCA}.Debug|x86.ActiveCfg = Debug|Win32
+		{8376216C-282A-4927-B9EF-C2D545FE0BCA}.Debug|x86.Build.0 = Debug|Win32
+		{8376216C-282A-4927-B9EF-C2D545FE0BCA}.Release|Any CPU.ActiveCfg = Release|Win32
+		{8376216C-282A-4927-B9EF-C2D545FE0BCA}.Release|ARM.ActiveCfg = Release|ARM
+		{8376216C-282A-4927-B9EF-C2D545FE0BCA}.Release|ARM.Build.0 = Release|ARM
+		{8376216C-282A-4927-B9EF-C2D545FE0BCA}.Release|x64.ActiveCfg = Release|x64
+		{8376216C-282A-4927-B9EF-C2D545FE0BCA}.Release|x64.Build.0 = Release|x64
+		{8376216C-282A-4927-B9EF-C2D545FE0BCA}.Release|x86.ActiveCfg = Release|Win32
+		{8376216C-282A-4927-B9EF-C2D545FE0BCA}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1BCD5B1E-517C-4919-90C5-481CEB3F1172} = {3E28AA7B-82BD-41B4-B6B2-7B85BA2C2D3B}
+		{5A8B1BB1-7CD5-47C4-A1F7-D7BCF5FACAD1} = {9AAF9E25-4ED3-42B1-8951-2A1956041233}
+		{F0A53BC9-C617-47DD-8B68-F91E3502D633} = {9AAF9E25-4ED3-42B1-8951-2A1956041233}
+		{8376216C-282A-4927-B9EF-C2D545FE0BCA} = {9AAF9E25-4ED3-42B1-8951-2A1956041233}
 	EndGlobalSection
 EndGlobal
