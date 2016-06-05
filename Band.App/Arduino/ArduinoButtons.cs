@@ -19,7 +19,7 @@ namespace Band.App.Arduino
         private const byte BLUE_BUTTON_PIN = 2;
 
         RemoteDevice _Arduino;
-        IStream _Connection;
+        UsbSerial _Connection;
 
         public event EventHandler<EventArgs> DeviceReady;
         public event EventHandler<ButtonArgs> ButtonPressed;
@@ -45,7 +45,7 @@ namespace Band.App.Arduino
                 _Arduino.DeviceReady += _Arduino_DeviceReady;
 
 
-                _Connection.begin(57600, 0);
+                _Connection.begin(57600);
 
                 return true;
             }
@@ -59,6 +59,7 @@ namespace Band.App.Arduino
         {
             Debug.WriteLine("Device is ready");
             Setup();
+            Loop();
             if (DeviceReady != null)
             {
                 DeviceReady(this, new EventArgs());
@@ -84,7 +85,7 @@ namespace Band.App.Arduino
         }
         private void _Arduino_DigitalPinUpdated(byte pin, PinState state)
         {
-            if (state == PinState.HIGH) 
+            if (state == PinState.LOW) 
             {
                 ButtonColor color;
                 switch (pin)
@@ -122,10 +123,10 @@ namespace Band.App.Arduino
         private void Setup ()
         {
             _Arduino.DigitalPinUpdated += _Arduino_DigitalPinUpdated;
-            _Arduino.pinMode(RED_BUTTON_PIN, PinMode.INPUT);
-            _Arduino.pinMode(YELLOW_BUTTON_PIN, PinMode.INPUT);
-            _Arduino.pinMode(GREEN_BUTTON_PIN, PinMode.INPUT);
-            _Arduino.pinMode(BLUE_BUTTON_PIN, PinMode.INPUT);
+            _Arduino.pinMode(RED_BUTTON_PIN, PinMode.PULLUP);
+            _Arduino.pinMode(YELLOW_BUTTON_PIN, PinMode.PULLUP);
+            _Arduino.pinMode(GREEN_BUTTON_PIN, PinMode.PULLUP);
+            _Arduino.pinMode(BLUE_BUTTON_PIN, PinMode.PULLUP);
 
          
         }
