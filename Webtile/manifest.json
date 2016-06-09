@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
-  "name": "ButtonBandTile",
-  "description": "Band Webtile to render button press results from an Arduino",
+  "name": "ButtonBand Tile",
+  "description": "ButtonBand Tile",
   "version": 1,
   "versionString": "1",
   "author": "Jason Agostoni",
@@ -10,16 +10,8 @@
   "tileIcon": {
     "46": "icons/tileIcon.png"
   },
-  "icons": {},
+  "icons": { },
   "refreshIntervalMinutes": 15,
-  "tileTheme": {
-    "base": "d94c66",
-    "highlight": "ea5475",
-    "lowlight": "c64763",
-    "secondary": "a3919c",
-    "highContrast": "bf455f",
-    "muted": "993344"
-  },
   "resources": [
     {
       "url": "https://buttonband.azurewebsites.net/api/buttoncounts",
