@@ -22,7 +22,7 @@
   },
   "resources": [
     {
-      "url": "http://buttonband.azurewebsites.net/api/buttoncounts",
+      "url": "https://buttonband.azurewebsites.net/api/buttoncounts",
       "style": "Simple",
       "content": {
         "_1_red": "Red",
