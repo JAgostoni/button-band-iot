@@ -11,7 +11,7 @@ namespace CreateDeviceKey
     class Program
     {
         static RegistryManager REGISTRY_MANAGER;
-        static string CONNECTION_STRING = "<Connection String>";
+        static string CONNECTION_STRING = "<connection string from hub>";
 
         static void Main(string[] args)
         {

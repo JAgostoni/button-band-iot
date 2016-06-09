@@ -1,0 +1,3 @@
+[submodule "remotewiring"]
+	path = remotewiring
+	url = https://github.com/JAgostoni/remote-wiring.git
